@@ -1,0 +1,56 @@
+\begin{thebibliography}{}
+\makeatletter
+\relax
+\def\mn@urlcharsother{\let\do\@makeother \do\$\do\&\do\#\do\^\do\_\do\%\do\~}
+\def\mn@doi{\begingroup\mn@urlcharsother \@ifnextchar [ {\mn@doi@}
+  {\mn@doi@[]}}
+\def\mn@doi@[#1]#2{\def\@tempa{#1}\ifx\@tempa\@empty \href
+  {http://dx.doi.org/#2} {doi:#2}\else \href {http://dx.doi.org/#2} {#1}\fi
+  \endgroup}
+\def\mn@eprint#1#2{\mn@eprint@#1:#2::\@nil}
+\def\mn@eprint@arXiv#1{\href {http://arxiv.org/abs/#1} {{\tt arXiv:#1}}}
+\def\mn@eprint@dblp#1{\href {http://dblp.uni-trier.de/rec/bibtex/#1.xml}
+  {dblp:#1}}
+\def\mn@eprint@#1:#2:#3:#4\@nil{\def\@tempa {#1}\def\@tempb {#2}\def\@tempc
+  {#3}\ifx \@tempc \@empty \let \@tempc \@tempb \let \@tempb \@tempa \fi \ifx
+  \@tempb \@empty \def\@tempb {arXiv}\fi \@ifundefined
+  {mn@eprint@\@tempb}{\@tempb:\@tempc}{\expandafter \expandafter \csname
+  mn@eprint@\@tempb\endcsname \expandafter{\@tempc}}}
+
+\bibitem[\protect\citeauthoryear{{Anderson}}{{Anderson}}{2016}]{2016wfc..rept...12A}
+{Anderson} J.,  2016, Technical report, {Empirical Models for the WFC3/IR PSF}
+
+\bibitem[\protect\citeauthoryear{{Anderson} \& {Bedin}}{{Anderson} \&
+  {Bedin}}{2017}]{2017arXiv170600386A}
+{Anderson} J.,  {Bedin} L.~R.,  2017, preprint, \href
+  {http://adsabs.harvard.edu/abs/2017arXiv170600386A} {} (\mn@eprint {arXiv}
+  {1706.00386})
+
+\bibitem[\protect\citeauthoryear{{Deustua}}{{Deustua}}{2016}]{wfc3handbook}
+{Deustua} S. e.~a.,  2016, Technical report
+
+\bibitem[\protect\citeauthoryear{{Goobar} et~al.,}{{Goobar}
+  et~al.}{2017}]{2017Sci...356..291G}
+{Goobar} A.,  et~al., 2017, \mn@doi [Science] {10.1126/science.aal2729}, \href
+  {http://adsabs.harvard.edu/abs/2017Sci...356..291G} {356, 291}
+
+\bibitem[\protect\citeauthoryear{{Kelly} et~al.,}{{Kelly}
+  et~al.}{2015}]{2015Sci...347.1123K}
+{Kelly} P.~L.,  et~al., 2015, \mn@doi [Science] {10.1126/science.aaa3350},
+  \href {http://adsabs.harvard.edu/abs/2015Sci...347.1123K} {347, 1123}
+
+\bibitem[\protect\citeauthoryear{{Moffat}}{{Moffat}}{1969}]{1969A&A.....3..455M}
+{Moffat} A.~F.~J.,  1969, \aap, \href
+  {http://adsabs.harvard.edu/abs/1969A%26A.....3..455M} {3, 455}
+
+\bibitem[\protect\citeauthoryear{{Refsdal}}{{Refsdal}}{1964}]{1964MNRAS.128..307R}
+{Refsdal} S.,  1964, \mn@doi [\mnras] {10.1093/mnras/128.4.307}, \href
+  {http://adsabs.harvard.edu/abs/1964MNRAS.128..307R} {128, 307}
+
+\bibitem[\protect\citeauthoryear{{S{\'e}rsic}}{{S{\'e}rsic}}{1963}]{1963BAAA....6...41S}
+{S{\'e}rsic} J.~L.,  1963, Boletin de la Asociacion Argentina de Astronomia La
+  Plata Argentina, \href {http://adsabs.harvard.edu/abs/1963BAAA....6...41S}
+  {6, 41}
+
+\makeatother
+\end{thebibliography}
