@@ -195,7 +195,8 @@ modeled by the point-spread function (PSF) of the images.  The shape of the \sn 
 in eq.~\eqref{eq:host}.  The full model is then fitted simultaneously to all data in for one NIRC2 filter 
 at a time.  Some parameters,  such as the host and lens models and the position of the \sn images, are forced to be 
 the same for all available images in a filter, while the fluxes of the \sn images are allowed to vary between the 
-different epochs.
+different epochs.  The exception is for images obtained a in 2017 where all \sn fluxes are fixed to zero, which breaks the 
+degeneracy between the PSFs and the background model.
 
 We generally use the parametrisation by \citet{1969A&A.....3..455M} for the PSF.  When doing PSF photometry it is customary 
 to first use isolated bright stars in the field to fit the PSF shape, and then fix the model.  However, since we are lacking 
@@ -268,10 +269,11 @@ in Tables~\ref{tb:lensmodel}--\ref{tb:hostmodelwidth}.
 	\centering
 	\caption{%
 		The fitted parameters of the host model, defined in~\eqref{eq:host}.  All quoted uncertainties are statistical 
-		fitting errors from each simultaneous fit.}
+		fitting errors from each simultaneous fit.
+		{\em Note:} Parameters marked with an asterisk ($^{*}$) were fixed to the given value in the fit.}
 		\label{tb:hostmodelflux}
-	\input{host1_model.tex}
-	\input{host2_model.tex}
+	\input{host_model.tex}
+	%\input{host2_model.tex}
 \end{table*}
 
 %% TABLE: Host widths
@@ -282,7 +284,6 @@ in Tables~\ref{tb:lensmodel}--\ref{tb:hostmodelwidth}.
 	\label{tb:hostmodelwidth}}
 	\input{host3_model.tex}	
 \end{table}
-
 
 As seen in Figure~\ref{fig:nirc2}, the model generally fits the data well.  Four \sn images are clearly visible in the \jband-band 
 but from panel~d) we also see that the fit is not perfect.  Discrepancies can mainly be seen for the brightest \sn image, which are 
@@ -317,41 +318,45 @@ Tables~\ref{tb:lensmodel}--\ref{tb:hostmodelwidth}.
 
 
 \subsection{WFC3 photometry}
-The \wfc data were obtained while \geu was active and reference images without \sn light are currently not available.   
-However, the photometry of the \sn can still be extracted by using a similar approach as in \S\ref{sec:nirc2}.  
+The \sn photometry could be extracted from the \wfc data by using the same approach as in \S\ref{sec:nirc2}. However, given the 
+lower resolution and the varying signal-to-noise of the host and lensing galaxy, all parameters could not be fitted for every filter.
 
-For the data obtained in particular with \wfcuvis we face a similar challenge as for NIRC2, the field of view is too small to
-include any isolated stars that could be used to model the PSF.  While conditions in space are relatively stable the PSF 
-of \wfc do vary both over the focal plane and in time, and a lot of effort has gone into understanding its characteristics 
+For the \wfcuvis data, we face a similar challenge as for NIRC2.  The field of view is too small to include any isolated stars that 
+could be used to model the PSF.  While conditions in space are relatively stable, the PSF of \wfc do vary over both the focal 
+plane and in time, and a lot of effort has gone into understanding its characteristics 
 \citep{2016wfc..rept...12A,2017arXiv170600386A}.  However, here we use a simple approach that is described in detail 
 in \S~\ref{sec:wfcpsf} and only briefly summarised here.  For \wfcuvis we simultaneously fit the parameters of a Moffat profile 
 to bright stars observed over time with the same subarray as \geu. The resulting fluxes are then compared to the corresponding 
-values obtained from calibrated aperture photometry, following the prescription outlined in \wfc data handbook.  The calculated 
+values obtained from calibrated aperture photometry, following the prescription outlined in the \wfc data handbook.  The calculated 
 estimated standard deviation, $0.02$--$0.10$~mag, from this comparison is used as the uncertainty of the method, and is 
 added to the error budget of the \geu photometry.
 
 The field-of-view for the \wfcir data is larger, and the bright star $20\arcsec$ North of \geu, was included in all observations.
 We simultaneously fit a PSF model to all observations of this star, which result in a dispersion $<0.01$~mag with 
-respect to the calibrated aperture photometry, if the last epoch is excluded.  Since this epoch does not provide a significant 
+respect to the calibrated aperture photometry, if the last epoch in 2016 is excluded.  Since this epoch does not provide a significant 
 contribution to the lightcurve it will also be excluded from the rest of the analysis.
 
-Using one fixed PSF for each filter, we can then follow the procedure from \S\ref{sec:nirc2} and \S\ref{sec:bgmodel}.  Since 
+Using one fixed PSF model for each filter, we can then follow the procedure from \S\ref{sec:nirc2} and \S\ref{sec:bgmodel}.  Since 
 we assume that the PSF is the same for all epochs, we do not convolve the model before comparing with the data in the 
-fitting routine, although doing this will result in similar \sn fluxes.  We also omit the host galaxy component from the model for 
-the two bluest bands, \hstu and \hstb, since data was not deep enough to detect it at these wavelengths.  For these filters we also 
-constrained ourselves to a circular symmetric lens model.
+fitting routine, although doing this will result in similar results.  For \hsti, we fit the same parameters as described in \S\ref{sec:nirc2}.
+For the remaining \wfcuvis filters this was not possible, and the lens parameters $n_S$, $\varepsilon$ and $\theta$ were then fixed to the
+results obtained for \hsti.  For \hstr, we fit all host parameters, while a simplified model with only the first order of angular dependence 
+was used for \hstb.  Further, the radial dependence and the width of the host model was fixed to the results obtained for \hsti.  
+For \hstu, the host component was omitted completed.  The model complexity for each filter was determined by calculating the 
+impact on the Bayesian Information Criteria (BIC) as more parameters were added.  When additional parameters did not impact the BIC,
+the previous model was selected.
 
-While fitting the combined \geu model works well for \wfcuvis it is significantly more challenging for the \wfcir data.  Both due to the
-lower resolution and to the flux ratio between the \sn images and the background being much lower.   The effective radius and the
-S\'ersic index for the lens can be constrained by the light beyond the Einstein right, but there is a degeneracy between the different 
-components inside the ring.  We therefore decided to only fit a single normalisation parameter for the host model, and fix all other 
-parameters to the values obtained for the NIRC2 \jband and \hband-fits, given that effective wavelengths of these bands are similar 
-to \hstj and \hsth, respectively.  These may be improved once reference images become available.
+For the \wfcir data it is more challenging to fit the full model due to the lower resolution, the broader PSF, and the lower flux ratio 
+between the \sn images and the background.   The effective radius and the S\'ersic index for the lens can be constrained by the 
+light beyond the Einstein right, but there is a degeneracy between the different components inside the ring.  Here, we fixed the 
+$\varepsilon$ and $\theta$ parameters of the lens model for \hstj and \hsth to the corresponding NRIC2 results for the 
+\jband and \hband, respectively, since the effective wavelengths of these filters are similar.  Similarly, the radial dependence and the width
+of the host model were also fixed to the corresponding NIRC2 results.
 
 Examples of data, model and normalised residual patches are shown in Figure~\ref{fig:wfcforward} for the different \wfc bands, while 
-the fitted parameters for the background models are presented in Tables~\ref{tb:lensmodel}--\ref{tb:hostmodelwidth}.  The fitted host
- normalisation parameters are shown in Table~\ref{tb:hostnorm}.  The resulting \sn fluxes from the simultaneous fitting is presented 
-in Table~\ref{tb:resolvflux}.
+the fitted parameters for the background models are presented in Tables~\ref{tb:lensmodel}--\ref{tb:hostmodelwidth}.  
+%  The fitted host normalisation parameters are shown in Table~\ref{tb:hostnorm}.
+The resulting \sn fluxes from the simultaneous fitting is presented in Table~\ref{tb:resolvflux}.
 
 %% Figure with WFC3 patches
 %%
@@ -366,26 +371,28 @@ in Table~\ref{tb:resolvflux}.
 \end{figure*}
 
 %% TABLE: Host normalization
-\begin{table}
-	\centering
-	\caption{%
-		The fitted normalisation parameter, $h$, for the host model in eq.~\eqref{eq:host} for the \wfcir bands.  In this case
-		the parameters $a_i, b_i$ are kept fixed to the values obtained for the NIRC2 $J$ and $H$ bands,
-		respectively.
-		\label{tb:hostnorm}}
-	%\input{host4_model.tex}
-    \input{host3_model.tex}
-\end{table}
+%\begin{table}
+%	\centering
+%	\caption{%
+%		The fitted normalisation parameter, $h$, for the host model in eq.~\eqref{eq:host} for the \wfcir bands.  In this case
+%		the parameters $a_i, b_i$ are kept fixed to the values obtained for the NIRC2 $J$ and $H$ bands,
+%		respectively.
+%		\label{tb:hostnorm}}
+%	%\input{host4_model.tex}
+%  \input{host3_model.tex}
+%\end{table}
 
 In Table~\ref{tb:resolvflux} we present two different errors for each measurement.  The first error is the statistical fitting error that is obtained 
 from the simultaneous fit for each filter.  However, we cannot exclude there are remaining degeneracies between primarily the host model
 and the \sn fluxes.  From the residual patches for \hstj and \hsth in Figure~\ref{fig:wfcforward} we can also see that the model we fit
-here does not provide very good fit to the data.  In order to estimate the uncertainties from the background model, we rebin  the 
-NIRC2 \jband-band data to pixel scales similar the \wfcuvis and \wfcir data.  We then carry out model fits to the data, both using and 
-omitting the reference image, and can conclude that the background flux within a FWHM radius under the \sn images varies 
-within up to 10\,\% between the two different cases.  For each fitted background model to the \wfc data, we then similarly calculate the
-underlying background model flux for each \sn image, and add 10\,\% of this value to the error budget.  This is shown in the second error
-column of Table~\ref{tb:resolvflux}.
+here does not provide very good fit to the data.  In order to estimate the uncertainties from the background model we adopt a conservative
+approach.  We place PSFs along the Einstein radius on the residual images to estimate the scatter of the fitted fluxes.  The result is added
+as a correlated error for each \sn image.
+% we rebin  the NIRC2 \jband-band data to pixel scales similar the \wfcuvis and \wfcir data.  We then carry out model fits to the data, both 
+% using and omitting the reference image, and can conclude that the background flux within a FWHM radius under the \sn images varies 
+% within up to 10\,\% between the two different cases.  For each fitted background model to the \wfc data, we then similarly calculate the
+% underlying background model flux for each \sn image, and add 10\,\% of this value to the error budget.  This is shown in the second error
+% column of Table~\ref{tb:resolvflux}.
 
 \subsection{Spectroscopy}
 \label{ssec-spectroscopy}
