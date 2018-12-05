@@ -82,6 +82,8 @@
 \newcommand{\hstj}{$F110W$\xspace}
 \newcommand{\hsth}{$F160W$\xspace}
 
+\newcommand{\sd}[1]{\textcolor{green}{SD: #1}}
+
 % Title of the paper, and the short title which is used in the headers.
 % Keep the title short and informative.
 \title[Extinction and time-delay constraints from \geu]{Extinction and time-delay constraints from the first resolved strongly lensed Type Ia supernova \geu}
@@ -388,6 +390,7 @@ underlying background model flux for each \sn image, and add 10\,\% of this valu
 column of Table~\ref{tb:resolvflux}.
 
 \subsection{Spectroscopy}
+\label{ssec-spectroscopy}
 In addition to the spectra presented in \scipap, we analyse the XSHOOTER spectra presented in \citet{2018MNRAS.473.4257C}. They found that \geu can be classified as a high-velocity ($V_{{\rm Si}{\sc ii} \lambda6355}^{\rm max} = 11950 \pm 140$ km s$^{-1}$), high- velocity gradient ($\odot{v} = -110.3 \pm 10.0$ km s$^{-1}$) and “core-normal” SN Ia. The strength of various features (measured though their pseudo-equivalent widths) argue against SN \geu being a faint, broad- lined, cool or shallow-silicon SN Ia.
 
 The spectra also reveal narrow absorption and emission lines, marked by the dashed vertical lines, from which the redshifts of the lens ($z = 0.2166 \pm 0.0001$, blue lines) and SN host galaxy ($z = 0.4090 \pm 0.0001$, red lines) were determined. Zoomed in view in rest-frame wavelengths of the Ca~{\sc ii} H~\&~K and Na~{\sc i}~D absorption features are shown in Fig.\ref{fig:spec_panels}, together with the $H_{\alpha}$, [N {\sc ii}] and O~{sc ii} emission lines. The $H_{\alpha}$ and [N {\sc ii}] emission lines at z = 0.2166 were used to fit the velocity dispersion of matter in the lensing galaxy, $\sigma_v = 163^{+41}_{-27}$ km/s (old number from \scipap).
@@ -435,11 +438,67 @@ To reduce the degeneracy between $E(B-V)_{\rm host}$ and $E(B-V)_{\rm lens}$ whe
 %2016-11-28 Keck1+LRIS (Kulkarni)
 %2016-11-30 GTC-OSIRIS (Cano+2017)
 %2016-12-15 GTC-OSIRIS (Cano+2017)
+\subsection{Constructing the SN model}
+\sd{I just wrote a section here to describe the model before writing the results of the fits in Section~\ref{sec:results}}
+Here, we describe the SN model constructed to derive the time-delay, magnification and extinction parameters for iPTF16geu. We construct a multiple-image model for an SN~Ia using \texttt{sncosmo} with a \texttt{Hsiao} model \citep{2007ApJ...663.1187H}, which incorporates a large spectral library for a diverse range of SNe~Ia. 
+  We fit the model to the observations using a $\chi^2$ likelihood with two terms for the ground based and the HST data. For the ground based data we compare the sum of the models to the observations, whereas for the HST data we compare the individual images. 
+\begin{equation}
+\label{eq:chi}
+\begin{aligned}
+\chi ^2 &= \left(\sum_{\lambda}^{\ac{iPTF}}\frac{\left[\left(\sum_i^{N} F_i^{model}(t,\lambda)\right)-F^{data}(t,\lambda)\right]^2}{\sigma^2(t,\lambda)}\right)+ \\
+&\quad \left(\sum_{\lambda}^{\ac{HST}}\sum_i^{N}\frac{\left[F_i^{model}(t,\lambda)-F_i^{data}(t,\lambda)\right]^2}{\sigma_i^2(t,\lambda)}\right),
+\end{aligned}
+\end{equation}
+where $F$ is the flux, $t$ is the epoch of the SN~Ia light curve, $N$ is the number of images and $\lambda$ is the effective wavelength of each filter. 
+
+For each of the four individual images, we apply an extinction correction for the host and lens galaxies as well as the Milky Way. We assume a standard MW reddening law \citep{1989ApJ...345..245C} for the MW, lens and host galaxies. For the MW, we set the slope of the reddening law, R$_V$ to 3.1, however, for the host and lens galaxies, we fix  R$_V$ to 2. This is using the slope of the luminosity-colour relation from the most updated compilations of cosmological samples \citep[see;][]{2018ApJ...859..101S,2018arXiv181102374D} which can be applied to iPTF16geu, since it shows distinct features of core-normal SNe~Ia \citep[e.g.,][]{2006PASP..118..560B}, used for cosmological constraints. Therefore, in our model fit, we include the following parameters 
+\begin{itemize}
+    \item The stretch, s, for the SN
+    \item The colour excess, $E(B-V)$ in the host galaxy
+    \item The colour excess, $E(B-V)$ for the individual images in the lens galaxy 
+    \item The time of maximum $t_{0}$ for each of the four images, and hence, the time-delays between the images
+    \item The magnification for each of the four images
+\end{itemize}
+
+
+From the spectroscopic analysis described in Section~\ref{ssec-spectroscopy}
+we use a prior on the relation between the $E(B-V)_{\rm host}$  and $E(B-V)_{\rm lens, 1}$ \sd{I am not sure why this is only for Image 1, is the spectrum only for Image 1?}. We fit this model to the data using a nested sampling software, \texttt{nestle} implemented in \texttt{sncosmo}. 
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=.9\textwidth]{16geu_lcfit.png}
+    \caption{Model fit to the photometry for iPTF16geu (see text for details). The ground based data are plotted in black whereas the HST data for Image 1 is in cyan, Image 2 in magenta, Image 3 in green and Image 4 in blue. The residuals from the best fit are shown in the panel under each filter. The filters are plotted in ascending order of effective wavelength.}
+    \label{fig:16geu_lc}
+\end{figure*}
 
 \section{Results}
-\subsection{Time-delays}
-\subsection{Differential extinction}
+\label{sec:results}
+In this section, we present the results of fitting the multiple-image SN model to the observations of iPTF16geu. For our analyses, we add an error term to the diagonal elements of the covariance matrix corresponding to 5$\%$ of the flux. This term represents systematic errors relating to unaccounted for effects, e.g. microlensing. We derive this term by requiring the reduced $\chi^2$ of the fit to be $\sim$ 1. 
+ We present the resulting values of the time-delays between the images (Section~\ref{ssec-time_delay}) and the properties of the extinction due to dust in the host and lens galaxies (Section~\ref{ssec-extinction}). 
 
+
+
+
+\input{parameters_tab.tex}
+
+
+
+\subsection{Time-delays}
+\label{ssec-time_delay}
+We fit the time of maximum for the four images and calculate the time-delay for images 2,3,4 relative to Image 1  t$_{01}$, t$_{02}$, t$_{03}$, t$_{04}$. The summary of the parameter values is presented in Table~\ref{tab:params}. 
+
+\subsection{Differential extinction}
+\label{ssec-extinction}
+In this section, we determine the parameters for the extinction in the different images. The resulting parameters from the fit are summarised in Table~\ref{tab:params}. We find a moderate amount of extinction in Images 1 and 2 (0.166 and 0.208 respectively), however, Images 3 and 4 have significantly larger extinction (0.653 and 0.794 respectively). The total amplification for iPTF16geu from this fit is 61.7 $\pm$ 18.4.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.5\textwidth]{amplification_Rv2.png}
+    \caption{The posterior distribution for the total amplification fitting the multiple-image \texttt{sncosmo} model described in the text. The median value is 62.3 with a 68$\%$ credible region between (58.7, 66.81).}
+    \label{fig:amp}
+\end{figure}
+
+We test the impact of changing the input R$_V$ for the lens and host galaxies. For a lower R$_V$ of 1.5, we obtain a higher $E(B-V)$ of 0.80$\pm$ 0.18 for Image 3, and a smaller total amplification of 54.6 $\pm$ 21.2, which is consistent with the value for the fiducial case. Conversely, for higher R$_V$ values of 3.1, the inferred $E(B-V)$ for Images 3 and 4 are 0.57($\pm$ 0.059) and 0.695 ($\pm$ 0.143) and the amplification is 75.1 $\pm$ 20.6. The total amplification distribution is plotted in Figure~\ref{fig:amp}. 
 
 %Figures and tables should be placed at logical positions in the text. Don't
 %worry about the exact layout, which will be handled by the publishers.
