@@ -459,8 +459,8 @@ Here, we describe the SN model constructed to derive the time-delay, magnificati
 \begin{equation}
 \label{eq:chi}
 \begin{aligned}
-\chi ^2 &= \left(\sum_{\lambda}^{\mathrm{Ground}}\frac{\left[\left(\sum_i^{N} F_i^{model}(t,\lambda)\right)-F^{data}(t,\lambda)\right]^2}{\sigma^2(t,\lambda)}\right)+ \\
-&\quad \left(\sum_{\lambda}^{\mathrm{HST}}\sum_i^{N}\frac{\left[F_i^{model}(t,\lambda)-F_i^{data}(t,\lambda)\right]^2}{\sigma_i^2(t,\lambda)}\right),
+\chi ^2 &= \sum_{\lambda}^{\mathrm{Ground}}\frac{\left[\left(\sum_i^{N} F_i^{model}(t,\lambda)\right)-F^{data}(t,\lambda)\right]^2}{\sigma^2(t,\lambda)}+ \\
+&\quad \sum_{\lambda}^{\mathrm{HST}}\sum_i^{N}\frac{\left[F_i^{model}(t,\lambda)-F_i^{data}(t,\lambda)\right]^2}{\sigma_i^2(t,\lambda)},
 \end{aligned}
 \end{equation}
 where $F$ is the flux, $t$ is the epoch of the SN~Ia light curve, $N$ is the number of images and $\lambda$ is the effective wavelength of each filter. 
@@ -507,7 +507,7 @@ In this section, we determine the parameters for the extinction in the different
 
 \begin{figure}
     \centering
-    \includegraphics[width=.5\textwidth]{amplification_Rv2.png}
+    \includegraphics[width=.5\textwidth]{amplif_dist_forpaper.png}
     \caption{The posterior distribution for the total amplification fitting the multiple-image \texttt{sncosmo} model described in the text. The median value is 62.3 with a 68$\%$ credible region between (58.7, 66.81).}
     \label{fig:amp}
 \end{figure}
