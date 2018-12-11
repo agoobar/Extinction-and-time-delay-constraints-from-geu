@@ -392,11 +392,9 @@ The resulting \sn fluxes from the simultaneous fitting is presented in Table~\re
 %\end{table}
 
 In Table~\ref{tb:resolvflux} we present two different errors for each measurement.  The first error is the statistical fitting error that is obtained 
-from the simultaneous fit for each filter.  However, we cannot exclude there are remaining degeneracies between primarily the host model
-and the \sn fluxes.  From the residual patches for \hstj and \hsth in Figure~\ref{fig:wfcforward} we can also see that the model we fit
-here does not provide very good fit to the data.  In order to estimate the uncertainties from the background model we adopt a conservative
-approach.  We place PSFs along the Einstein radius on the residual images to estimate the scatter of the fitted fluxes.  The result is added
-as a correlated error for each \sn image.
+from the simultaneous fit for each filter.  However, from the residual patches in Figure~\ref{fig:wfcforward} we can 
+see that the model does not always provide a perfect fit to the data.  In order to estimate the uncertainties from the imperfect model we 
+place PSFs along the Einstein radius on the residual images to estimate the scatter of the fitted fluxes.  When this is is larger than the statistical uncertainty, we add the square root of the difference of the squares of the two uncertainties as a correlated error for each \sn image.
 % we rebin  the NIRC2 \jband-band data to pixel scales similar the \wfcuvis and \wfcir data.  We then carry out model fits to the data, both 
 % using and omitting the reference image, and can conclude that the background flux within a FWHM radius under the \sn images varies 
 % within up to 10\,\% between the two different cases.  For each fitted background model to the \wfc data, we then similarly calculate the
