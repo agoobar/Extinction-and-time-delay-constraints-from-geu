@@ -479,7 +479,7 @@ we use a prior on the relation between the $E(B-V)_{\rm host}$  and $E(B-V)_{\rm
 \begin{figure*}
     \centering
     \includegraphics[width=.9\textwidth]{16geu_lcfit.png}
-    \caption{Model fit to the photometry for iPTF16geu (see text for details). The ground based data are plotted in black whereas the HST data for Image 1 is in cyan, Image 2 in magenta, Image 3 in green and Image 4 in blue. The residuals from the best fit are shown in the panel under each filter. The filters are plotted in ascending order of effective wavelength. The Y-SPM data are scaled down by 30$\%$, as is discussed in the text {\bf Do discuss}.  }
+    \caption{Model fit to the photometry for iPTF16geu (see text for details). The ground based data are plotted in black whereas the HST data for Image 1 is in cyan, Image 2 in magenta, Image 3 in green and Image 4 in blue. The residuals from the best fit are shown in the panel under each filter. The errors for the HST data include the diagonal elements of the systematics covariance matrix added in quadrature to the statistical uncertainties. The filters are plotted in ascending order of effective wavelength. The Y-SPM data are scaled down by 30$\%$, as is discussed in the text {\bf Do discuss}.  }
     \label{fig:16geu_lc}
 \end{figure*}
 
@@ -497,11 +497,11 @@ In this section, we present the results of fitting the multiple-image SN model t
 
 \subsection{Time-delays}
 \label{ssec-time_delay}
-We fit the time of maximum for the four images and calculate the time-delay for images 2,3,4 relative to Image 1  t$_{01}$, t$_{02}$, t$_{03}$, t$_{04}$. The summary of the parameter values is presented in Table~\ref{tab:params}. 
+We fit the time of maximum for the four images and calculate the time-delay for images 2,3,4 relative to Image 1  t$_{01}$, t$_{02}$, t$_{03}$, t$_{04}$. The summary of the parameter values is presented in Table~\ref{tab:params}. The time-delays for the three images 2,3,4 relative to Image 1 are -0.713, -1.408 and -0.637 days respectively. However, due to the large uncertainties in constraining the time-delays, they are consistent with a zero day time delay at the 95$\%$ C.L. 
 
 \subsection{Differential extinction}
 \label{ssec-extinction}
-In this section, we determine the parameters for the extinction in the different images. The resulting parameters from the fit are summarised in Table~\ref{tab:params}. We find a moderate amount of extinction in Images 1 and 2 (0.166 and 0.208 respectively), however, Images 3 and 4 have significantly larger extinction (0.653 and 0.794 respectively). The total amplification for iPTF16geu from this fit is 61.7 $\pm$ 18.4.
+In this section, we determine the parameters for the extinction in the different images. The resulting parameters from the fit are summarised in Table~\ref{tab:params}. We find a moderate amount of extinction in Images 1 and 2 (0.166 and 0.208 respectively), however, Images 3 and 4 have significantly larger extinction (0.653 and 0.794 respectively). The total amplification for iPTF16geu from this fit is (58.5, 65.3).
 
 \begin{figure}
     \centering
@@ -516,6 +516,11 @@ We test the impact of changing the input R$_V$ for the lens and host galaxies. F
 By modelling the lens galaxy, we find that the four images are of comparable brightness. However, fitting the \texttt{sncosmo} model described above, we find that while images 2 and 3 are of comparable brightness, image 4 is 9.5 times fainter than image 1. Here, we test whether this is a result of our assumptions regarding the properties of the host galaxy reddening. We assume that all four images have the same R$_V$, however, the different lines of sight do not, a priori, have to have the same reddening properties. We test the impact of relaxing this assumption and fix Images 1,2,3 to have a low R$_V$ of 1 and Image 4 to have a high R$_V$ of 5. This extreme combination of R$_V$ values was chosen to evaluate whether the difference in image brightness can completely be explained by differences in R$_V$. 
 
 We note, however, that even in the extreme case of differing R$_V$ value we find that Image 4 is 6.1 times fainter than Image 1. For this case, the best fit E$(B-V)$ for Image 4 is a  significantly smaller value of  0.36 ($\pm$ 0.11). Hence, these results suggest that a difference in the dust properties for the lines of sight of Images 1 and 4 is not the dominant cause of the difference in the brightness of the images.
+
+
+\subsection{Future observations of similar systems}
+We note here that the resolved observations of the multiple images only began $\sim$ 2 weeks after maximum light, hence, the peak in the HST filters is not well determined. Here, we analyse what the constraints on the time-delay and extinction parameters would be if we were to obtain observations close to the peak. 
+
 %Figures and tables should be placed at logical positions in the text. Don't
 %worry about the exact layout, which will be handled by the publishers.
 %
