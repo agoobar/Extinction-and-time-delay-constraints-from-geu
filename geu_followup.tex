@@ -450,9 +450,19 @@ To reduce the degeneracy between $E(B-V)_{\rm host}$ and $E(B-V)_{\rm lens}$ whe
 %2016-11-28 Keck1+LRIS (Kulkarni)
 %2016-11-30 GTC-OSIRIS (Cano+2017)
 %2016-12-15 GTC-OSIRIS (Cano+2017)
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.5\textwidth]{ColourExcess_11fe_comparison_fid.png}
+    \caption{The evolution of the colour excess (relative to an unextinguish template from the nearby, normal SN~2011fe) as a function of phase in the $F625W - F814W$ filters for the four images. The inferred colour excess from all the filters for Image 4 is lower than the observed optical colour excess. The solid magenta line is the colour excess evolution for the case with $R_V$ for Image 4 as a free parameter.  The colour evolution shows that the chromatic, time-dependent effects of microlensing are small.}
+    \label{fig:colour_evolution}
+\end{figure}
+
 \subsection{Constructing the SN model}
 \sd{I just wrote a section here to describe the model before writing the results of the fits in Section~\ref{sec:results}}
-Here, we describe the SN model constructed to derive the time-delay, magnification and extinction parameters for iPTF16geu. We construct a multiple-image model for an SN~Ia using \texttt{sncosmo} with a \texttt{Hsiao} model \citep{2007ApJ...663.1187H}, which incorporates a large spectral library for a diverse range of SNe~Ia. 
+Here, we describe the SN model constructed to derive the time-delay, magnification and extinction parameters for iPTF16geu. We construct a multiple-image model for an SN~Ia using \texttt{sncosmo} with a \texttt{Hsiao} model \citep{2007ApJ...663.1187H}, which incorporates a large spectral library for a diverse range of SNe~Ia. iPTF16geu shows light curve properties consistent with normal SNe~Ia. For example, it shows a clear second maximum in the NIR (F110W, F160W) filters, as seen for nearby SNe. Accounting for time-dilation and K-correction, we find that the time of the second maximum (t$_2$)  29.3 $\pm$ 1.1 days after $B$-band maximum, consistent with the median $J$-band (the corresponding rest-frame filter) t$_2$ for nearby, normal, SNe~Ia \citep{2012A&A...537A..57B, 2015MNRAS.448.1345D}. Since t$_2$ is a distance independent measurement, this further justifies the choice of using a normal SN~Ia model to fit the iPTF16geu light curves. \sd{Is this subsection okay for describing the second maximum timing of 16geu?}
+
   We fit the model to the observations using a $\chi^2$ likelihood with two terms for the ground based and the HST data. For the ground based data we compare the sum of the models to the observations, whereas for the HST data we compare the individual images. 
 \begin{equation}
 \label{eq:chi}
@@ -501,7 +511,7 @@ We fit the time of maximum for the four images and calculate the time-delay for 
 
 \subsection{Differential extinction}
 \label{ssec-extinction}
-In this section, we determine the parameters for the extinction in the different images. The resulting parameters from the fit are summarised in Table~\ref{tab:params}. We find a moderate amount of extinction in Images 1 and 2 (0.166 and 0.208 respectively), however, Images 3 and 4 have significantly larger extinction (0.653 and 0.794 respectively). The total amplification for iPTF16geu from this fit is (58.5, 65.3).
+In this section, we determine the parameters for the extinction in the different images. The resulting parameters from the fit are summarised in Table~\ref{tab:params}. We find a moderate amount of extinction in Images 1 and 2 (0.166 and 0.208 respectively), whereas Image 3 has an extinction of 0.53 mag and Image 4 is heavily reddened with an $E(B-V)$ of 1.07 mag. The total amplification for iPTF16geu from this fit is 62.3 with a 68$\%$ credible region of (58.7, 66.81).
 
 \begin{figure}
     \centering
@@ -510,16 +520,25 @@ In this section, we determine the parameters for the extinction in the different
     \label{fig:amp}
 \end{figure}
 
-We test the impact of changing the input R$_V$ for the lens and host galaxies. For a lower R$_V$ of 1.5, we obtain a higher $E(B-V)$ of 0.80$\pm$ 0.18 for Image 3, and a smaller total amplification of 54.6 $\pm$ 21.2, which is consistent with the value for the fiducial case. Conversely, for higher R$_V$ values of 3.1, the inferred $E(B-V)$ for Images 3 and 4 are 0.57($\pm$ 0.059) and 0.695 ($\pm$ 0.143) and the amplification is 75.1 $\pm$ 20.6. The total amplification distribution is plotted in Figure~\ref{fig:amp}. 
+We test the impact of changing the input R$_V$ for the lens and host galaxies. For a lower R$_V$ of 1.5, we obtain a smaller total amplification of 52.5 and a 68$\%$ credible region of (48.5, 56.0), but higher $E(B-V)$ for Images 3 and 4. Conversely, for higher R$_V$ values of 3.1, the inferred total amplification is 73.1 and a 68$\%$ credible region of (66.10, 80.12). Hence, even when varying R$_V$ within a large range of observed values for SN hosts, the total magnification does not change by more than $\sim 1 \sigma$.
+The total amplification distribution for the fiducial case with R$_V = 2$ is plotted in Figure~\ref{fig:amp}. 
 
 {\bf How to connect this to the lens modeling}
-By modelling the lens galaxy, we find that the four images are of comparable brightness. However, fitting the \texttt{sncosmo} model described above, we find that while images 2 and 3 are of comparable brightness, image 4 is 9.5 times fainter than image 1. Here, we test whether this is a result of our assumptions regarding the properties of the host galaxy reddening. We assume that all four images have the same R$_V$, however, the different lines of sight do not, a priori, have to have the same reddening properties. We test the impact of relaxing this assumption and fix Images 1,2,3 to have a low R$_V$ of 1 and Image 4 to have a high R$_V$ of 5. This extreme combination of R$_V$ values was chosen to evaluate whether the difference in image brightness can completely be explained by differences in R$_V$. 
+By modelling the lens galaxy, we find that the four images are of comparable brightness. However, fitting the \texttt{sncosmo} model described above, we find that while images 2 and 3 are of comparable brightness, image 4 is 9.5 times fainter than image 1. Here, we test whether this is a result of our assumptions regarding the properties of the host galaxy reddening. We assume that all four images have the same R$_V$, however, the different lines of sight do not, a priori, have to have the same reddening properties. Moreover, we find that the inferred $E(B-V)$ for Image 4 is lower than the $E(F625W - F814W)$ colour excess (Figure~\ref{fig:colour_evolution}). Hence,
+for test whether there is a combination of extinction parameters for Image 4 which can explain the difference in the brightness between Image 1 and 4, we fit the model with R$_V$ of Image 4 as a free parameter. We find that a low R$_V \sim 1$ and $E(B-V) \sim 2$ best fit the data, hence, by keeping R$_V$ free, the inferred $E(B-V)$ is consistent with the observed colour excess $E(F625W - F814W)$. However, there is a strong degeneracy between the R$_V$ and $E(B-V)$, which implies that a high R$_V$ and $E(B-V) \sim 2$ combination of parameters is within the 2 $\sigma$ limit allowed by the data. When fitting only for the parameters (i.e. the amplitude, $E(B-V)$ and R$_V$) of Image 4, we find that the amplitude of Image 1 is consistent with Image 4 within 2 $\sigma$. Thus, a large extinction could explain the difference in the brightness between Images 1 and 4.
+\begin{figure}
+    \centering
+    \includegraphics[width=.5\textwidth]{corner_amp_Image4.png}
+    \caption{The corner plot showing the correlation between the amplitude, $E(B-V)$ and R$_V$ for Image 4. The blue points correspond to the amplitude of Image 1 and the extinction of $E(B-V) = 2$ with R$_V = 2$. The amplitude for Image 1 is within the 2 $\sigma$ limit of the distribution of the amplitude for Image 4.}
+    \label{fig:corner_Image4}
+\end{figure}
+ 
 
-We note, however, that even in the extreme case of differing R$_V$ value we find that Image 4 is 6.1 times fainter than Image 1. For this case, the best fit E$(B-V)$ for Image 4 is a  significantly smaller value of  0.36 ($\pm$ 0.11). Hence, these results suggest that a difference in the dust properties for the lines of sight of Images 1 and 4 is not the dominant cause of the difference in the brightness of the images.
 
-
-\subsection{Future observations of similar systems}
+\subsection{Future observations of similar glSNe~Ia systems}
 We note here that the resolved observations of the multiple images only began $\sim$ 2 weeks after maximum light, hence, the peak in the HST filters is not well determined. Here, we analyse what the constraints on the time-delay and extinction parameters would be if we were to obtain observations close to the peak. 
+We use the best fit model for iPTF16geu to extrapolate the observations near maximum light. We generate ten observations uniformly in the phase region between 10 and 30 days from the first iPTF observation. We conservatively assume an error on each point to be drawn from a uniform distribution given by the errors on the observed post-maximum epochs. Since the SN is brighter at maximum light we would expect smaller errors on the fluxes. Under these assumptions we fit the above mentioned \texttt{sncosmo} model to the simulated data. 
+We find that the maximum light data significantly improve the constraints on the time delays, allowing a $\sim$ 17$\%$ measurement of the time delay, or 4 hour per day which is a significant improvement compared to the 70$\%$ errors from the current measurements. We also find that the data will improve our constraints on the $E(B-V)$ for the images 2, 3, 4 by a factor 3.5, 2.5 and 6, making the constraints on the extinction parameters significantly more robust.  
 
 %Figures and tables should be placed at logical positions in the text. Don't
 %worry about the exact layout, which will be handled by the publishers.
