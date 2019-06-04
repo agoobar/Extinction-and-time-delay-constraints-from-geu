@@ -64,6 +64,8 @@
 \newcommand{\snia}{SN~Ia\xspace}
 \newcommand{\sneia}{SNe~Ia\xspace}
 \newcommand{\sne}{SNe\xspace}
+\newcommand{\glsne}{glSNe\xspace}
+
 \newcommand{\hst}{HST\xspace}
 \newcommand{\wfc}{WFC3\xspace}
 \newcommand{\uvis}{UVIS\xspace}
@@ -92,12 +94,12 @@
 
 % The list of authors, and the short list which is used in the headers.
 % If you need two or more lines of authors, add an extra line using \newauthor
-\author[Amanullah et al.]{%
-R.~Amanullah,$^{1}$\thanks{E-mail: rahman@fysik.su.se}
+\author[Dhawan et al.]{%
+S.~Dhawan,$^{1}$ \thanks{E-mail: suhail.dhawan@fysik.su.se}
+R.~Amanullah,$^{1}$
 A.~Goobar,$^{1}$
-S.~Dhawan,$^{1}$ 
-E.~M\"ortsell,$^{1}$
-J.~Johansson
+J.~Johansson,
+E.~M\"ortsell$^{1}$
 \newauthor
 B.~Cenko,
 A.~Cooray,
@@ -128,9 +130,10 @@ $^{1}$The Oskar Klein Centre, Physics Department,
 
 % Abstract of the paper
 \begin{abstract}
-Observations of resolved strongly lensed Type Ia supernovae (\sneia) can be used for cosmological applications or to study
-properties of the lensing galaxy, such as extinction and the matter distribution .  Here we report the results from 
-measurements obtained with the Hubble Space Telescope of the multiple images of \geu.
+We report time-delays, lensing amplifications and extinction estimates for the first resolved multiply-imaged Type Ia supernova iPTF16geu using \emph{Hubble Space Telescope} (HST) observations, as well as supporting ground-based data. Time-delay measurements of strongly lensed supernovae may become a powerful technique for measuring the Hubble constant, the parameter with the largest tension in precision cosmology. Furthermore, the resolved multi-band images provide unique information about the lensing galaxy, as well as the differential dimming due to dust in the lines of sight piercing the foreground galaxy. Using HST and Keck AO reference images taken after the SN faded below detection, we  obtain a refined estimate of the total lensing amplification for iPTF16geu,  $\mu = 63.8^{+3.9}_{-5.0}$, after corrections for extinction in the host and lensing galaxy.
+As expected from the great symmentry of the system, we measure very short  time-delays for the three fainter images with respect to the brightest one: -0.81$\pm$ 0.80, -2.64 $\pm$ 1.5 and -0.164 $\pm$ 2.01 days.  Interestingly, we find large differences between the magnifications of the four supernova images, even after accounting for uncertainties in the extinction corrections:  $\Delta m_1 = -3.91^{+0.11}_{-0.09}$,   $\Delta m_2 =  -2.87^{+0.14}_{-0.15}$,  $\Delta m_3 = -2.19^{+0.75}_{-0.33}$ and  $\Delta m_4 = -2.11^{+1.40}_{-0.45}$ mag. The  large scatter requires additional gravitation lensing by substructures, micro- or millilensing (or some other mechanism) in addition to the large scale lens causing the observed image separations. 
+Lighcurve fits of the resolved  multi-color observations are used to measure  
+the total-to-selective absorption ratio, $R_V$, for the four lines of sight through the lensing galaxy. For three of the images we find significantly lower than the Milky Way average value.
 \end{abstract}
 %hej hej
 % Select between one and six entries from the list of approved keywords.
@@ -141,23 +144,25 @@ keyword1 -- keyword2 -- keyword3
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%% BODY OF PAPER %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%% BODY OF PAPER%%%%%%%%%%%%%%%%%%
 
 \section{Introduction}
-More than half a century has passed since
-\citet{1964MNRAS.128..307R} proposed  to measure the expansion rate of the universe, the Hubble parameter, using time delay measurements of multiply-imaged gravitationally lensed supernovae (\sne). However, discovering these rare events has proven very challenging and it is only thanks to 
-the recent developments in time domain astronomy that the first couple of resolved lensed supernovae have been detected. SN Refsdal \citep{2015Sci...347.1123K}, detected with the Hubble Space Telescope (HST), is a core-collapse \sn magnified by a cluster of galaxies, while 
-iPTF16geu \citep[][G17]{2017Sci...356..291G}, the subject of this work, is split into four resolved images by an individual galaxy. Furthermore, it was spectroscopically classified as a Type Ia supernova,  i.e., it is well-suited to precision estimates of the magnification caused by the lensing galaxy. 
+The discovery of the first multiply-imaged gravitationally lensed Type Ia supernova (SN~Ia), iPTF16geu \citep[][hereafter G17]{2017Sci...356..291G} was a major breakthrough for time-domain astronomy, highlighting the power of wide-field surveys to detect rare phenomena.  Transient astrophysical sources that are strongly lensed by foreground galaxies or galaxy clusters are powerful probes in cosmology since they make it possible to measure relative time delays between the multiple images. More than half a century has passed since \citet{1964MNRAS.128..307R} proposed that time-delays between multiple images of transients like supernovae (SNe) are useful since they depend sensitively on both cosmological parameters, e.g. the Hubble constant (H$_0$). The observations allow us also to probe the distribution of matter in the lens. Hence, multiply-resolved gravitationally lensed supernovae (\glsne) are exquisite laboratories for fundamental physics, as well as astrophysical properties of the host and lens galaxies. Although several strongly lensed galaxies and quasars have been discovered, \glsne have notable advantages, particularly if they're of Type Ia (glSNe~Ia). This is because the ``standard candle" nature of the SNe~Ia allows us to directly measure the magnification factor, which can allow us to overcome various degeneracies in estimating H$_0$ from strongly lensed transients, including the mass-sheet degeneracy \citep{1985ApJ...289L...1F,2014A&A...564A.103S}.
 
-The discovery of iPTF16geu highlighted the power of the wide-field surveys to discover lensed \sneia without the need of high-spatial observations, thanks to their "standard candle" nature. At $z=0.409$, the \sn was found to be 30 standard deviations too bright compared with the \snia population, which prompted us to observed the system from space with HST and with adaptive optics (AO) at VLT and Keck.  Here we report on the multi-wavelength follow-up observations carried out while the \sn was active in late 2016, as well as laser aided AO Near IR observations with Keck and HST observations after the SN had 
-faded below the detection limit.
+However, discovering these rare events has proven very challenging and it is only thanks to the recent developments in time domain astronomy that the first couple of resolved lensed supernovae have been detected. SN Refsdal \citep{2015Sci...347.1123K}, detected with the Hubble Space Telescope (HST), is a core-collapse \sn magnified by a cluster of galaxies, which makes the lens modelling extremely challenging \citep{2018ApJ...860...94G}. 
 
-The photometric data at hand is used to estimate the dimming by dust in the host galaxy, common to all four \sn images, and in the lensing galaxy for the individual images. This provides us with robust extinction measurements in the lensing elliptical galaxy at $z=0.216$ and we use the corrected lightcurves to measure the lensing magnification of the \sn images, as well as the time delays between them. The accurate \sn image positions are used to model the lens, as described in an accompanying paper (M\"ortsell et al, in prep). 
-Unlike the case of strongly lensed AGNs, as the transient faded, we had an opportunity to verify the lensing model with the reconstruction of the distorted host galaxy image. 
-By comparing the model predictions of the flux ratios between \sn images with the reddening corrected observations, we assess the possibility that otherwise unaccounted  residuals are caused by lensing of substructures within the lensing galaxy, i.e., microlensing or millilensing.  
-In another accompnaying paper (Johansson et al, in prep) we present that spectroscopic observations of \geu.
+The discovery of iPTF16geu showed that glSNe~Ia can be found without the need of highly spatially resolved observations, thanks to their "standard candle" nature. At $z=0.409$, the \sn was found to be 30 standard deviations too bright compared with the \snia population, which prompted us to observe the system from space with HST and with adaptive optics (AO) at VLT and Keck. Here we report on the multi-wavelength follow-up observations carried out while the \sn was active in late 2016, as well as laser aided AO Near IR observations with Keck and HST observations after the SN had faded below the detection limit.
+We use the multi-wavelength light curves from the resolved images in combination with unresolved, ground-based data to constrain the magnifications of the individual SN images (and hence, the total SN magnification) after accounting for the extinction in the different lines of sight to the multiple images. 
+ 
 
+
+The accurate \sn image positions are used to model the lens, as described in an accompanying paper (M{\"o}rtsell et al, in prep). Unlike the case of strongly lensed quasars, as the transient faded, we had an opportunity to verify the lensing model with the reconstruction of the distorted host galaxy image. 
+By comparing the model predictions of the flux ratios between \sn images the observed values after extinction correction for each image, we assess the possibility that otherwise unaccounted for residuals are caused by lensing of substructures within the lensing galaxy, i.e., microlensing or millilensing.  
+In another accompanying paper (Johansson et al, in prep) we present the spectroscopic observations of \geu.
+
+The structure of this paper is as follows. We present the observations of iPTF16geu in Section~\ref{sec:data} and the photometry in Section~\ref{sec:photometry}. In Section~\ref{sec:lcmodel}, we describe the multiple-image SN model and the resulting lensing amplification, time-delays and constraints on extinction properties in Section~\ref{sec:results}. We present the observed magnifications in context of model predictions and discuss the possibility of substructures in Section~\ref{sec:substructure} and discuss observations of future strongly lensed SNe in Section~\ref{sec:forecast}. Finally, we present our conclusions in Section~\ref{sec:conclusion}.
 \section{Observations}
+\label{sec:data}
 \subsection{Hubble Space Telescope Wide Field Camera 3}
 We observed \geu with the Hubble Space Telescope (HST) Wide Field Camera~3 (\wfc) in under programs DD~14862 and 
 GO~15276 (PI: A.~Goobar) using the ultra violet (\wfcuvis) and (\wfcir) channels.  For both channels we only read out part, 
@@ -181,8 +186,7 @@ flat-fielded and corrected for charge-transfer inefficiency, was used for all da
 channels.  The individual images were then combined and corrected for geometric distortion using the \texttt{AstroDrizzle} software.
 
 \subsection{Ground data}
-In addition to the data already presented in \scipap, \geu was followed from the ground until it disappeared behind 
-the sun.  We further observed the system in \jband, \hband and \ksband bands on UT June 16th 2017, after \geu had faded away, 
+In addition to the data already presented in \scipap, \geu was followed from the ground until it disappeared behind the Sun. We further observed the system in \jband, \hband and \ksband bands on UT June 16th 2017, after \geu had faded away, 
 using laser guided adaptive optics (LGS-AO) with the NIRC2 instrument at the Keck~II telescope on Mauna Kea.  For the 
 \jband and \hband bands we obtained 9~exposures in a dithering pattern, each with an integration time of 20\,s.  For the \ksband band, 
 18~exposures of 65\,s were acquired. 
@@ -193,11 +197,12 @@ frame was obtained from the images preceding and following each exposure, after 
 Together with data presented in \scipap this resulted in a total of 3~epochs for the NIRC2/\jband and 2~epochs for the 
 NIRC2/\hband and NIRC2/\ksband bands, respectively.
 
-\ag{JOEL, RATIR data description missing...}
-
+We also obtained $riZYJH$ photometry of iPTF16geu with the multi-channel Reionization And Transients InfraRed camera \citep[RATIR;][]{butler2012} mounted on the 1.5-m Johnson telescope at the Mexican Observatorio Astronomico Nacional on Sierra San Pedro Martir in Baja California, Mexico \citep{watson2012}. Typical observations include a series of X-s exposures in the ri bands and Y-s exposures in the ZY JH bands, with dithering between exposures. 
+The RATIR data were reduced and coadded using standard CCD and IR processing techniques in IDL and Python, utilizing the online astrometry programs SExtractor and SWarp. Calibration was performed using field stars with reported fluxes in both 2MASS (Skrutskie et al. 2006) and the SDSS Data Release 9 Catalogue (Ahn et al. 2012). % Template image subtracted ...
 %%% PHOTOMETRY
 %%%
 \section{Photometric analysis}
+\label{sec:photometry}
 \subsection{Forward modelling of the NIRC2 images}\label{sec:nirc2}
 The LGS-AO NIRC2 images have the highest spatial resolution in our data set.  We can use the NIRC2 data to build a 
 parametric model of the \geu system, including the \sn images, the host galaxy, and the lens.  The model we use is 
@@ -207,7 +212,7 @@ modeled by the point-spread function (PSF) of the images.  The shape of the \sn 
 in eq.~\eqref{eq:host}.  The full model is then fitted simultaneously to all data in for one NIRC2 filter 
 at a time.  Some parameters,  such as the host and lens models and the position of the \sn images, are forced to be 
 the same for all available images in a filter, while the fluxes of the \sn images are allowed to vary between the 
-different epochs.  The exception is for images obtained a in 2017 where all \sn fluxes are fixed to zero, which breaks the 
+different epochs.  The exception is for images obtained in 2017 where all \sn fluxes are fixed to zero, which breaks the 
 degeneracy between the PSFs and the background model.
 
 We generally use the parametrisation by \citet{1969A&A.....3..455M} for the PSF.  When doing PSF photometry it is customary 
@@ -328,7 +333,15 @@ Tables~\ref{tb:lensmodel}--\ref{tb:hostmodelwidth}.
 %% Why is there a difference between the Sersic index for the UVIS and NIRC2?  Is it expected to be wavelength dependent?
 %% Close to an exponential profile nS = 1, "which is a good description of spiral galaxy disks and dwarf elliptical galaxies."
 
-
+\begin{figure*}
+	\centering
+	\caption{%
+		Examples of data, model and residual patches for each \wfc filter.  The residual patches have been normalised by the 
+		pixel uncertainty to form the "pull".  For each filter, the epoch where the \sn was the brightest is shown.  This corresponds
+		to Oct.~25, 2016 for \hstu, \hstb, \hstr, and \hsti,  and Nov.~2nd, 2016 for \hstj and \hsth, respectively.
+	\label{fig:wfcforward}}
+	\includegraphics[width=\textwidth]{wfc3_patches_v2.pdf}
+\end{figure*}
 \subsection{WFC3 photometry}
 The \sn photometry could be extracted from the \wfc data by using the same approach as in \S\ref{sec:nirc2}. However, given the 
 lower resolution and the varying signal-to-noise of the host and lensing galaxy, all parameters could not be fitted for every filter.
@@ -372,15 +385,7 @@ The resulting \sn fluxes from the simultaneous fitting is presented in Table~\re
 
 %% Figure with WFC3 patches
 %%
-\begin{figure*}
-	\centering
-	\caption{%
-		Examples of data, model and residual patches for each \wfc filter.  The residual patches have been normalised by the 
-		pixel uncertainty to form the "pull".  For each filter, the epoch where the \sn was the brightest is shown.  This corresponds
-		to Oct.~25, 2016 for \hstu, \hstb, \hstr, and \hsti,  and Nov.~2nd, 2016 for \hstj and \hsth, respectively.
-	\label{fig:wfcforward}}
-	\includegraphics[width=\textwidth]{wfc3_patches_v2.pdf}
-\end{figure*}
+
 
 %% TABLE: Host normalization
 %\begin{table}
@@ -398,70 +403,29 @@ In Table~\ref{tb:resolvflux} we present two different errors for each measuremen
 from the simultaneous fit for each filter.  However, from the residual patches in Figure~\ref{fig:wfcforward} we can 
 see that the model does not always provide a perfect fit to the data.  In order to estimate the uncertainties from the imperfect model we 
 place PSFs along the Einstein radius on the residual images to estimate the scatter of the fitted fluxes.  When this is is larger than the statistical uncertainty, we add the square root of the difference of the squares of the two uncertainties as a correlated error for each \sn image.
-% we rebin  the NIRC2 \jband-band data to pixel scales similar the \wfcuvis and \wfcir data.  We then carry out model fits to the data, both 
-% using and omitting the reference image, and can conclude that the background flux within a FWHM radius under the \sn images varies 
-% within up to 10\,\% between the two different cases.  For each fitted background model to the \wfc data, we then similarly calculate the
-% underlying background model flux for each \sn image, and add 10\,\% of this value to the error budget.  This is shown in the second error
-% column of Table~\ref{tb:resolvflux}.
 
-%Move this to the Johansson et al paper!
-%\subsection{Spectroscopy}
-%\label{ssec-spectroscopy}
-%In addition to the spectra presented in \scipap, we analyse the XSHOOTER spectra presented in \citet{2018MNRAS.473.4257C}. They found that \geu can be classified as a high-velocity ($V_{{\rm Si}{\sc ii} \lambda6355}^{\rm max} = 11950 \pm 140$ km s$^{-1}$), high- velocity gradient ($\odot{v} = -110.3 \pm 10.0$ km s$^{-1}$) and “core-normal” SN Ia. The strength of various features (measured though their pseudo-equivalent widths) argue against SN \geu being a faint, broad- lined, cool or shallow-silicon SN Ia.
+\begin{figure*}
+\centering
+\includegraphics[width=\textwidth,trim={0 10mm 0 8mm},clip]{subtractions/F390W_57686.png}
+\includegraphics[width=\textwidth,trim={0 10mm 0 8mm},clip]{subtractions/F475W_57686.png}
+\includegraphics[width=\textwidth,trim={0 10mm 0 8mm},clip]{subtractions/F625W_57686.png}
+\includegraphics[width=\textwidth,trim={0 10mm 0 8mm},clip]{subtractions/F814W_57686.png}
+\includegraphics[width=\textwidth,trim={0 10mm 0 8mm},clip]{subtractions/F110W_57686.png}
+\includegraphics[width=\textwidth,trim={0 10mm 0 8mm},clip]{subtractions/F160W_57686.png}
+\caption{%
+	HST observations in 20 October 2016 in the F390W, F475W, F625W, F814W, F110W, F160W filters, together with template subtracted images, fitted PSF models and residuals after the four SN PSFs have been subtracted, for each filter.
+	\label{fig:subtractions}
+}
+\end{figure*}
 
-%The spectra also reveal narrow absorption and emission lines, marked by the dashed vertical lines, from which the redshifts of the lens ($z = 0.2166 \pm 0.0001$, blue lines) and SN host galaxy ($z = 0.4090 \pm 0.0001$, red lines) were determined. Zoomed in view in rest-frame wavelengths of the Ca~{\sc ii} H~\&~K and Na~{\sc i}~D absorption features are shown in Fig.\ref{fig:spec_panels}, together with the $H_{\alpha}$, [N {\sc ii}] and O~{sc ii} emission lines. The $H_{\alpha}$ and [N {\sc ii}] emission lines at z = 0.2166 were used to fit the velocity dispersion of matter in the lensing galaxy, $\sigma_v = 163^{+41}_{-27}$ km/s (old number from \scipap).
-
-%For the lensing galaxy, we measure the equivalent widths (EW) of the Ca~{\sc ii} H~\&~K and Na~{\sc i}~D absorption features to be 9.93 \AA \, and 2.12 \AA \,, respectively. At the host galaxy redshift, we measure EWs of 2.25 \AA \, and 3.60 \AA \, for the Ca~{\sc ii} H~\&~K and Na~{\sc i}~D absorption features, respectively.
-
-%Using the relations from Barbon (1990), Turato et al. (2003) and Poznanski et al. (2011) that relate the Na~{\sc i}~D EW and color excess, $E(B-V)$, we find that $E(B-V)_{\rm lens} \sim 0.83 \pm 0.5$ mag and $E(B-V)_{\rm host} \sim 1.47 \pm 0.5$ mag. (It should be noted that these relations are only "well defined" for EW < 1.0 \AA \, and that the "theoretical" relation is between EW and optical depth, $\tau \sim A_V$, and that $A_V = R_V \times E(B-V)$ with $R_V$ =3.1 is usually assumed?). 
-
-%To reduce the degeneracy between $E(B-V)_{\rm host}$ and $E(B-V)_{\rm lens}$ when fitting the light curves, we introduce a prior based on the ratio of the Na~{\sc i}~D absorption in the host and lens, such that $E(B-V)_{\rm host} = f \times E(B-V)_{\rm lens}$, with $1.6 \leq f \leq 1.8$.
-%Lens:
-%Poznanski, 2012 EBV= 4.2465252214
-%Poznanski, 2011 EBV= 0.830730337068
-%Turatto, 2003, EBV= 0.32887640449 1.04016853931
-%Barbon, 1990 EBV= 0.529494382016
-%Host:
-%Poznanski, 2012 EBV= 232.450124618
-%Poznanski, 2011 EBV= 1.4695912879
-%Turato, 2003, EBV= 0.566592107125 1.79788734146
-%Barbon, 1990 EBV= 0.900925167382
-
-% Other analyses to do?
-% put stuff on BPT diagram?
-% far fetched host galaxy redshift(s)?
-
-%\begin{figure*}
-%	\centering
-%	\caption{Zoomed in panels on narrow absorption and emission lines in the XSHOOTER spectrum
-%	\label{fig:spec_panels}}
-%	\includegraphics[width=\textwidth]{spec_panels.pdf}
-%\end{figure*}
-
-% There are also additional spectra:
-%2016-10-09 NTT+EFOSC (PESSTO)
-%2016-10-09 FTN+FLOYDS
-%2016-10-10 NTT+EFOSC (PESSTO)
-%2016-10-15 GTC-OSIRIS (Cano+2017)
-%2016-10-18 GTC-OSIRIS (Cano+2017)
-%2016-10-22 DCT+LMI (Cenko?)
-%2016-10-26 P200+DBSP
-%2016-10-26 Keck2+DEIMOS (Filippenko)
-%2016-10-30 GTC-OSIRIS (Cano+2017)
-%2016-10-31 Keck1+LRIS (Lunnan - what happened to this data?)
-%2016-11-02 Keck1+LRIS (Kulkarni)
-%2016-11-18 GTC-OSIRIS (Cano+2017)
-%2016-11-28 Keck1+LRIS (Kulkarni)
-%2016-11-30 GTC-OSIRIS (Cano+2017)
-%2016-12-15 GTC-OSIRIS (Cano+2017)
-
-
+\iffalse
 \begin{figure}
     \centering
     \includegraphics[width=.5\textwidth]{ColourExcess_11fe_comparison_timeOff}
     \caption{The evolution of the colour excess (relative to an unextinguish template from the nearby, normal SN~2011fe) as a function of phase in the $F625W - F814W$ filters for the four images. Each Image has been shifted by a $\Delta_{\rm t}$ of $\sim$ 1 day for improved visibility.}
     \label{fig:colour_evolution}
 \end{figure}
+\fi
 
 \input{parameters_tab.tex}
 \subsection{Building lightcurves from subtracted images}
@@ -470,16 +434,16 @@ Here we describe Joel's subtractions.... explain motivation, mainly due to model
 dependencies in the coarse pixel data....including pretty pictures.
 
 
-\section{Lightcurve fits}
-We combine the ground based data with the resolved photometry from HST to fit for the global lightcurve parameters: lightcurve shape, color excess from either intrinsic color variations or dimming by dust in the host galaxy. In addition, we use the multi-band lightcurves of the resolved 
-\sn images to fit for the lightcurve peaks and time offsets between the four \sn images, as well as extinction in the lensing galaxy for each individual line of sight. In total, 
-Here, we describe the SN model constructed to derive the time-delay, magnification and extinction parameters for iPTF16geu. We construct a multiple-image model for an SN~Ia using \texttt{sncosmo} with a \texttt{Hsiao} model \citep{2007ApJ...663.1187H}, which incorporates a large spectral library for a diverse range of SNe~Ia. iPTF16geu shows light curve properties consistent with normal SNe~Ia. For example, it shows a clear second maximum in the NIR (F110W, F160W) filters, as seen for nearby SNe. Accounting for time-dilation and K-correction, we find that the time of the second maximum (t$_2$)  29.3 $\pm$ 1.1 days after $B$-band maximum, consistent with the median $J$-band (the corresponding rest-frame filter) t$_2$ for nearby, normal, SNe~Ia \citep{2012A&A...537A..57B, 2015MNRAS.448.1345D}. Since t$_2$ is a distance independent measurement, this further justifies the choice of using a normal SN~Ia model to fit the iPTF16geu light curves. \sd{Is this subsection okay for describing the second maximum timing of 16geu?}
+\section{Lightcurve fitting model}
+\label{sec:lcmodel}
+We combine the ground based data with the resolved photometry from HST to fit for the global lightcurve parameters: lightcurve shape (or stretch, $s$), color excess from either intrinsic color variations or dimming by dust in the host galaxy. In addition, we use the multi-band lightcurves of the resolved 
+\sn images to fit for the lightcurve peaks and time offsets between the four \sn images, as well as extinction in the lensing galaxy for each individual line of sight. 
+Here, we describe the SN model constructed to derive the time-delay, magnification and extinction parameters for iPTF16geu. We construct a multiple-image model for an SN~Ia using \texttt{sncosmo} with a \texttt{Hsiao} model \citep{2007ApJ...663.1187H}, which is constructed from a large library of spectra for diverse SNe~Ia. We use the \texttt{Hsiao} model since iPTF16geu shows light curve properties consistent with normal SNe~Ia. 
+SNe~Ia in the local universe show a characteristic NIR ($iYJHK$) light curve morphology \citep{1996AJ....112.2438H,2010AJ....139..120F}.  Unlike in the optical, where the light curves decline after peak, in the NIR, SNe~Ia rebrighten 2-3 weeks after the $B$-band maximum. This feature has also been seen in well-studied intermediate-$z$ SNe \citep[e.g., see][]{2000ApJ...536...62R}. iPTF16geu shows a distinct second maxmium in the observer frame F110W and F160W filters (corresponding to re. Accounting for time-dilation and K-correction, we find that the time of the second maximum ($t_2$)  29.3 $\pm$ 1.1 days after $B$-band maximum, consistent with the median $J$-band (the corresponding rest-frame filter) $t_2$ for nearby, normal, SNe~Ia \citep{2012A&A...537A..57B, 2015MNRAS.448.1345D}. Since $t_2$ only depends on the redshift but not the distance, this further justifies the choice of using a normal SN~Ia model to fit the iPTF16geu light curves. 
+We fit the model to the observations using a $\chi^2$ likelihood with two terms for the ground based and the HST data. For the ground based data we compare the sum of the models to the observations, whereas for the HST data we compare the individual images, where $F$ is the flux, $t$ is the epoch of the SN~Ia light curve, $N$ is the number of images and $\lambda$ is the effective wavelength of each filter. 
 
-  We fit the model to the observations using a $\chi^2$ likelihood with two terms for the ground based and the HST data. For the ground based data we compare the sum of the models to the observations, whereas for the HST data we compare the individual images. 
-
-where $F$ is the flux, $t$ is the epoch of the SN~Ia light curve, $N$ is the number of images and $\lambda$ is the effective wavelength of each filter. 
-
-For each of the four individual images, we apply an extinction correction for the host and lens galaxies as well as the Milky Way. We assume a standard MW reddening law \citep{1989ApJ...345..245C} for the MW, lens and host galaxies. For the MW, we set the slope of the reddening law, R$_V$ to 3.1, however, for the host and lens galaxies, we fix  R$_V$ to 2. This is using the slope of the luminosity-colour relation from the most updated compilations of cosmological samples \citep[see;][]{2018ApJ...859..101S,2018arXiv181102374D} which can be applied to iPTF16geu, since it shows distinct features of core-normal SNe~Ia \citep[e.g.,][]{2006PASP..118..560B}, used for cosmological constraints. Therefore, in our model fit, we include the following parameters 
+Along with the above mentioned host and lens galaxy extinction correction, we also correct for Milky Way (MW) dust, assuming the standard  reddening law \citep[][hereafter, CCM89]{1989ApJ...345..245C} for the MW, with $R_V = 3.1$. For the host and lens galaxies, we follow \citet{Amanullah:2015bj} and use a dust law from \citet[][hereafter, F99]{Fitzpatrick:1999dx}. For our fiducial analysis, we fix the F99 dust correction $R_V$ to 2. 
+This is using the slope of the luminosity-colour relation ($\beta \sim 3$, hence, $R_V \sim 2$) from the most updated compilations of cosmological samples \citep[see;][]{2018ApJ...859..101S,2018arXiv181102374D}. Since iPTF16geu shows light curve and spectroscopic features similar to core-normal SNe~Ia \citep{2018MNRAS.473.4257C} which are used for constraining cosmology, we can use the mean $R_V$ from the cosmological compilations for fitting the colour excess for iPTF16geu. Hence, in our model fit, we include the following parameters 
 \begin{itemize}
     \item The stretch, s, for the SN
     \item The colour excess, $E(B-V)$ in the host galaxy
@@ -495,21 +459,20 @@ For each of the four individual images, we apply an extinction correction for th
 \end{aligned}
 \end{equation}
 
-From the spectroscopic analysis described in Section~\ref{ssec-spectroscopy}
-we use a prior on the relation between the $E(B-V)_{\rm host}$  and $E(B-V)_{\rm lens, 1}$ \sd{I am not sure why this is only for Image 1, is the spectrum only for Image 1?}. We fit this model to the data using a nested sampling software, \texttt{nestle} implemented in \texttt{sncosmo}. 
+We fit this model to the data using a nested sampling software, \texttt{nestle} implemented in \texttt{sncosmo}. 
 
 
 
 \begin{figure*}
     \centering
     \includegraphics[width=.9\textwidth]{16geu_lcfit_magscale.png}
-    \caption{Model fit to the photometry for iPTF16geu (see text for details). The ground based data are plotted in black whereas the HST data for Image 1 is in cyan, Image 2 in magenta, Image 3 in green and Image 4 in blue. The residuals from the best fit are shown in the panel under each filter. The errors for the HST data include the diagonal elements of the systematics covariance matrix added in quadrature to the statistical uncertainties. The filters are plotted in ascending order of effective wavelength. The Y-SPM data are scaled down by 30$\%$, as is discussed in the text {\bf Do discuss}.  }
+    \caption{Model fit to the photometry for iPTF16geu (see text for details). The ground based data are plotted in black whereas the HST data for Image 1 is in cyan, Image 2 in magenta, Image 3 in green and Image 4 in blue. The residuals from the best fit are shown in the panel under each filter. The errors for the HST data include the diagonal elements of the systematics covariance matrix added in quadrature to the statistical uncertainties. The filters are plotted in ascending order of effective wavelength. The Y-SPM data are scaled down by 30$\%$.}
     \label{fig:16geu_lc}
 \end{figure*}
 
 \section{Results}
 \label{sec:results}
-In this section, we present the results of fitting the multiple-image SN model to the observations of iPTF16geu. For our analyses, we add an error term to the diagonal elements of the covariance matrix corresponding to 5$\%$ of the flux. This term represents systematic errors relating to unaccounted for effects, e.g. microlensing. We derive this term by requiring the reduced $\chi^2$ of the fit to be $\sim$ 1. 
+In this section, we present the results of fitting the multiple-image SN model described in Section~\ref{sec:lcmodel} to the observations of iPTF16geu. In our analyses, we add an additional error term corresponding to 6$\%$ of the flux to the diagonal terms of the error covariance matrix such that the reduced $\chi^2$ for the fit is $\sim 1$. 
  We present the resulting values of the time-delays between the images (Section~\ref{ssec-time_delay}) and the properties of the extinction due to dust in the host and lens galaxies (Section~\ref{ssec-extinction}). For the fiducial case we fit the time of maximum, amplitudes and colour excesses for the four SN images as well as the total to selection absorption, $R_V$ in the lens galaxy and the colour excess in the host galaxy. 
 
 
@@ -521,65 +484,71 @@ In this section, we present the results of fitting the multiple-image SN model t
 
 \subsection{Differential extinction and lensing magnification}
 \label{ssec-extinction}
-In this section, we analyse the properties of the extinction of  iPTF16geu due to the dust in the host and the lens galaxies. The reddening parameters for our analysis include the $R_V$, $E(B-V)$ for the host galaxy and the $R_V$ and $E(B-V)$ for each image in the lens galaxy. 
-We start with the simplifying assumption that the lens $R_V$ is the same for each SN image. Furthermore, we set the host and lens $R_V$ to the best fit value from the cosmological fits i.e. $R_V \sim \beta -1 \sim 2$ \citep[e.g.][]{2018ApJ...859..101S}.  The resulting parameters from the fit are summarised in Table~\ref{tab:params}.
+Here we present the properties of extinction of  iPTF16geu due to the dust in the host and the lens galaxies as well as the magnification of each image relative to a normal SNe~Ia at the redshift of the source (i.e. $z = 0.409$). As described in Section~\ref{sec:lcmodel}, for our fiducial case, we fix the $R_V$ in the host and lens galaxies to 2, the best fit value for SNe~Ia used in cosmology. 
+The resulting parameters from the fit are summarised in Table~\ref{tab:params}. We assume that the host extinction is the same for each image since the difference in the light travel path is very small ($\sim$ few pc) and we do not expect the dust properties to varying significantly on those timescales. We find host $E(B-V)$ of 0.045 $\pm 0.039$, consistent with no reddening at $< 2 \sigma$. The $E(B-V)$ in the Images 1,2,3,4 is 0.311 ($\pm$ 0.056), 0.293 ($\pm$ 0.078), 0.524 ($\pm$ 0.165) and 1.082 ($\sim$ 0.263) respectively. Hence, there is moderate extinction in the first three images, and a significant amount of reddening in Image 4.
 
 \begin{figure}
     \centering
     \includegraphics[width=.5\textwidth]{amplif_dist_forpaper_linscale.png}
-    \caption{The posterior distribution for the total amplification fitting the multiple-image \texttt{sncosmo} model described in the text. The median value is 62.3 with a 68$\%$ credible region between (58.7, 66.81).}
+    \caption{The posterior distribution for the total magnification fitting the multiple-image \texttt{sncosmo} model described in the text. The median value is 63.8 with a 68$\%$ credible region between (58.7, 66.81).}
     \label{fig:amp}
 \end{figure}
 
-The colour excess in the host galaxy is 0.322 $\pm$ 0.018 mag, which is assumed to be the same for each image since the difference in the light paths is very small for the images and hence, the dust properties are not expected to varying on those scales ($\sim$ few pc). For Images 1 and 2 we find a low value for the extinction of 0.19 $\pm$ 0.01 and 0.06, however, Images 3 and 4 have significant $E(B-V)$ of $\sim 0.7$ and $\sim  1.7$ mag. Setting the lens $R_V$ to 3.1, the canonical Milky Way value, we get lower $E(B-V)$ for each Image, as summarised in Table~\ref{tab:params}.
+We also test the impact of altering the assumption on $R_V$. For a fixed $R_V = 3.1$, corresponding to the MW value, in both the host and lens galaxies, we find host $E(B-V)$ of 0.039 ($\pm$ 0.047) and lens $E(B-V)$ for Images 1,2,3,4 to be 0.215 ($\pm$ 0.057), 0.204 ($\pm$ 0.069), 0.264 ($\pm$ 0.113), 0.603 ($\pm$ 0.176). 
+We also let the $R_V$ in the lens galaxy as a free parameter. The data indicate low lens $R_V < 1.8$ at 95 $\%$ C.L. 
 
-We also compute the total amplification for iPTF16geu and test the impact of our assumptions on the reddening parameters. For our fiducial case with both host and lens galaxy $R_V = 2$, we obtain an median amplification of 61.20 with a 68$\%$ credible region of (56.30, 64.96). Assuming the Milky Way value of $R_V = 3.1$ for both the host and the lens galaxy, we get a total amplification of 74.77 with a 68$\%$ credible region (66.27, 79.82). Leaving the $R_V$ free for the lens galaxy (keeping host galaxy $R_V$ fixed to 2), the total amplification is 59.28 and the 68$\%$ credible region is (55.02, 62.49). Hence, we find that the total magnification does not change more than $\sim 1 -1.5 \sigma$ for different assumptions on the $R_V$ in the host and lens galaxy. The individual image magnifications (Table~\ref{tab:params}) are also robust to the assumptions on the reddening properties.
-
-
-%We test the impact of fixing the $R_V$ of the lens galaxy, firstly to the ensemble value for the SNe~Ia used in cosmological analysis, i.e. $R_V = 2$ and then to fixing it to the canonical Milky Way value of 3.1. We find that fixing the lens $R_V$ to higher than the best fit value results in lower inferred $E(B-V)$ values  for the SN images (see Table~\ref{tab:params}). The total amplification of the SN is 61.7 $\pm$ 5 and 71.4 $\pm$ 6 for the cases with $R_V$ fixed to 2 and 3, respectively, which are both consistent with the value obtained with lens $R_V$ as a free parameter {\bf SD: update numbers with higher resolution fit}. 
-
-%We test the impact of changing the input R$_V$ for the lens and host galaxies. For a lower R$_V$ of 1.5, we obtain a smaller total amplification of 52.5 and a 68$\%$ credible region of (48.5, 56.0), but higher $E(B-V)$ for Images 3 and 4. Conversely, for higher R$_V$ values of 3.1, the inferred total amplification is 73.1 and a 68$\%$ credible region of (66.10, 80.12). Hence, even when varying R$_V$ within a large range of observed values for SN hosts, the total magnification does not change by more than $\sim 1 \sigma$.
+We also compute the total amplification for iPTF16geu and the magnification of each image. For our fiducial case with both host and lens galaxy $R_V = 2$, we obtain an median amplification of 63.80 with a 68$\%$ credible region of (58.32, 67.70). The individual images are magnified by -3.911, -2.868, -2.189, -2.109 magnitudes respectively. We find that the magnification for iPTF16geu is robust to the assumption on the $R_V$ for the host and lens galaxies (see Table~\ref{tab:params} for individual magnifications for different $R_V$ assumptions).
 
 
-%{\bf How to connect this to the lens modeling}
-%By modelling the lens galaxy, we find that the four images are of comparable brightness. However, fitting the \texttt{sncosmo} model described above, we find that while images 2 and 3 are of comparable brightness, image 4 is 9.5 times fainter than image 1. Here, we test whether this is a result of our assumptions regarding the properties of the host galaxy reddening. We assume that all four images have the same R$_V$, however, the different lines of sight do not, a priori, have to have the same reddening properties. Moreover, we find that the inferred $E(B-V)$ for Image 4 is lower than the $E(F625W - F814W)$ colour excess (Figure~\ref{fig:colour_evolution}). Hence,
-%for test whether there is a combination of extinction parameters for Image 4 which can explain the difference in the brightness between Image 1 and 4, we fit the model with R$_V$ of Image 4 as a free parameter. We find that a low R$_V \sim 1$ and $E(B-V) \sim 2$ best fit the data, hence, by keeping R$_V$ free, the inferred $E(B-V)$ is consistent with the observed colour excess $E(F625W - F814W)$. However, there is a strong degeneracy between the R$_V$ and $E(B-V)$, which implies that a high R$_V$ and $E(B-V) \sim 2$ combination of parameters is within the 2 $\sigma$ limit allowed by the data. When fitting only for the parameters (i.e. the amplitude, $E(B-V)$ and R$_V$) of Image 4, we find that the amplitude of Image 1 is consistent with Image 4 within 2 $\sigma$. Thus, a large extinction could explain the difference in the brightness between Images 1 and 4.
+
+
+
+
+
+
 \begin{figure*}
     \centering
-    \includegraphics[width=.4\textwidth]{corner_plots/corner_samples_1.png}
-    \includegraphics[width=.4\textwidth]{corner_plots/corner_samples_2.png}
-    \includegraphics[width=.4\textwidth]{corner_plots/corner_samples_3.png}
-    \includegraphics[width=.4\textwidth]{corner_plots/corner_samples_4.png}
-    \caption{The figure shows the correlations between the amplification of each of the four images (normalised the median amplification of the faintest image, i.e. image 4) and reddening properties ($R_V$, $E(B-V)$). Images 1,2 and 3 have weak to no constraints on the $R_V$, however, for Image 4 we can place an upper limit on the $R_V$ of 3.2 at the 95$\%$ C.L. However, despite the weak constraints on the $R_V$, the amplification for each image is well-constrained. While Image 3 has a similar amplification to Image 4, Images 1 and 2 are $\sim$ 10 and $\sim$ 3 times brighter than Image 4, likely requiring an additional source of magnification.}
+    %\includegraphics[width=.4\textwidth]{corner_plots/corner_samples_1.png}
+    %\includegraphics[width=.4\textwidth]{corner_plots/corner_samples_2.png}
+    %\includegraphics[width=.4\textwidth]{corner_plots/corner_samples_3.png}
+    %\includegraphics[width=.4\textwidth]{corner_plots/corner_samples_4.png}
+    \includegraphics[width=.48\textwidth]{RV_EBV_lens_16geu.pdf}
+    \includegraphics[width=.48\textwidth]{amplitude_RVto2_JoelPhoto_ModelCompAlpha11.pdf}
+    \caption{(Left) Correlation plots for the extinction parameters $R_V$ and $E(B-V)$ for each of the Images in the case where all $R_V$'s are free parameters. (Right) Amplification distribution for the individual images for the fiducial case of host and lens $R_V$ fixed to 2 compared to the predictions from the lens model (dotted lines; M{\"o}rtsell et al in prep).}
     \label{fig:corner_Image4}
 \end{figure*}
  \subsection{Time-delays}
 \label{ssec-time_delay}
-We fit the time of maximum for the four images and calculate the time-delay for images 2,3,4 relative to Image 1  t$_{01}$, t$_{02}$, t$_{03}$, t$_{04}$. The summary of the parameter values is presented in Table~\ref{tab:params}. The time-delays for the three images 2,3,4 relative to Image 1 are -0.713, -1.408 and -0.637 days respectively. However, due to the large uncertainties in constraining the time-delays, they are consistent with a zero day time delay at the 95$\%$ C.L. 
-
-\subsubsection{Model-independent time-delays}
-In addition to the model fit above, we also derive time-delays from the light curves without assuming an SN model. SNe~Ia have a distinct light curve morphology showing a second maximum $\sim$ few weeks after the first, we use the timing of this feature to derive constraints on $\Delta_t$. Since Images 1 and 2 are the brightest, the NIR light curves only have high enough signal to noise for these two images to derive a time-delay. We use two different methods to fit the data. Firstly, we derive $\Delta_{\rm t}$ using a Gaussian Process (GP) smoothing to the light curve. We use the Matern32 kernel implemented within the \texttt{GPy} package \citep{gpy2014}. We also use a cubic spline interpolation to compare with the GP results.
-
-From our fits to the F110W  we derive time-delays of 2.54 $\pm$ 1.18 days and 0.37 $\pm$ 0.97 days which are consistent with zero time-delay and the inferred values from the model fits. 
-\ag{NOT sure about this section. The obvious question is why only mention 110 and not e.g 160? Need to discuss caveats}
+We fit the time of maximum for the four images and calculate the time-delay for images 2,3,4 relative to Image 1  $t_{01}$, $t_{02}$, $t_{03}$, $t_{04}$. The summary of the parameter values is presented in Table~\ref{tab:params}. The time-delays for the three images 2,3,4 relative to Image 1 are -0.811, -2.608 and -0.164 days respectively. However, due to the large uncertainties in constraining the time-delays, they are consistent with a zero day time delay at the 95$\%$ C.L. 
+We also derive time-delays from the light curves without assuming an SN model. SNe~Ia have a distinct light curve morphology showing a second maximum $\sim$ few weeks after the first, we use the timing of this feature to derive constraints on $\Delta_t$. Since Images 1 and 2 are the brightest, the NIR light curves only have high enough signal to noise for these two images to derive a time-delay. We use two different methods to fit the data. Firstly, we derive $\Delta_{\rm t}$ using a Gaussian Process (GP) smoothing to the light curve. We use the Matern32 kernel implemented within the \texttt{GPy} package \citep{gpy2014}.
+The model independent constraints are also consistent with the $\sim$ 1 day time delay derived from fitting the \texttt{sncosmo} model to the data. 
 
 \section{Lensing from sub-structures}
-\ag{Here we need an exectuve summary of Edvard's paper and present the case for why images 1 and 2
-are deviant, afterextinction correction}
+\label{sec:substructure}
+The fact that \geu exploded very close to the inner caustic of the lens, makes the predicted images for a smooth lens similar in terms of radial position, magnification and arrival time. 
+In \citet{2017Sci...356..291G}, the total magnification of the SN images could not be well constrained, but
+the adopted lens halo predicted brightness differences between the SN images in disagreement with observations.
+Taking advantage of the improved observational constraints since then, uncertainties in the mass, ellipticity and orientation of the lens galaxy are decreased by a factor $\sim 7$ (M{\"o}rtsell et al. in prep).
+The slope of the lens density, $\rho\propto r^{-n}$ where $r^2=\theta_1^2+\theta_2^2$, is still only very loosely constrained, and when varying $n$, the image flux ratios vary little, but their total flux much more. The model consistently predicts image 4 to be the brightest, with slightly lower, similar fluxes for the other three images. 
+The fact that the predicted flux ratios are consistently off from the observed values, indicates the need of additional (de)magnification for at least two of the images. A possible resolution is that $n\sim 1.7$, slightly shallower than an isothermal sphere for which $n=2,$ with image 1 magnified by an additional $\Delta m\sim 1$, and image 4 demagnified by the same amount from substructure in the galaxy.
 
-From Table~\ref{tab:params}, we report the values of the magnifications for each individual image. We find that Image 1 is the brightest and 4 is the faintest. Lens models of the system \citep[e.g.][M{\"o}rtsell et al. in prep.]{2017ApJ...835L..25M} suggest that the SN images would have very similar brightnesses since the SN images are symmetric around the lens. We test whether this could be a result of differential extinction, i.e. a difference in the $R_V$ for the dust in the region around Images 1 and 4. Assuming a different $R_V$ for Images 1 and 4, in this case setting it to extreme values of $R_V = 1$ and $R_V = 5$ for Images 1 and 4 respectively. We find that Image 4 is still fainter than Image 1 by a factor $\sim$ 6 and the best fit value compensates for the high input $R_V$ with a lower inferred $E(B-V)$. Hence, differential extinction is an unlikely explanation for the discrepancy between the observed and modelled image brightness ratios. Additionally, we fit for two different $R_V$'s in the lens galaxy, one for Image 1 and the other for Images 2,3,4. For this case, Image 4 is $\sim$ a factor 9 fainter than Image 1, since the $R_V$ for Image 4 is $1.2 \sim 1.3$ whereas the best fit $R_V$ of Image 1 $2.9 \sim 0.30$. The $R_V$ for Image 1 is  This conclusion is consistent with the symmetry of the system which would indicate that differential extinction is unlikely.
+From Table~\ref{tab:params}, we report the values of the magnifications for each individual image. We find that Image 1 is the brightest and 4 is the faintest. Lens models of the system \citep[e.g.][M{\"o}rtsell et al. in prep.]{2017ApJ...835L..25M} suggest that the SN images would have very similar brightnesses since the SN images are symmetric around the lens. We test whether this could be a result of differential extinction, i.e. a difference in the $R_V$ for the dust in the region around Images 1 and 4. Assuming a different $R_V$ for Images 1 and 4, in this case setting it to extreme values of $R_V = 1$ and $R_V = 5$ for Images 1 and 4 respectively, we find that Image 4 is still fainter than Image 1 by a factor $\sim$ 6 and the best fit value compensates for the high input $R_V$ with a lower inferred $E(B-V)$. Moreover, we also fitted for two different $R_V$'s in the lens, one for Images 1,2,3 and a separate $R_V$ for Image 4. For this case, we get similar values for both $R_V$'s and hence, Image 4 is still $\sim$ 9 times fainter than Image 1.  Hence, differential extinction is an unlikely explanation for the discrepancy between the observed and modelled image brightness ratios. Recent studies in the literature study the impact of microlensing on the inferred time-delay, accounting for the 3D source geometry, and find a bias of a few tenths of a day \citep{2019A&A...621A..55B}. We note that the error on our inferred time-delays is $\sim 1$ day hence, the microlensing bias has a subdominant contribution to the error budget.
+%Additionally, we fit for two different $R_V$'s in the lens galaxy, one for Image 1 and the other for Images 2,3,4. For this case, Image 4 is $\sim$ a factor 9 fainter than Image 1, since the $R_V$ for Image 4 is $1.2 \pm 0.3$ whereas the best fit $R_V$ of Image 1 $2.9 \sim 0.30$. This conclusion is consistent with the symmetry of the system which would indicate that differential extinction is unlikely.
 
 \section{Implications for observations of future strongly lensed \sn}
+\label{sec:forecast}
 We note here that the resolved observations of the multiple images only began $\sim$ 2 weeks after maximum light, hence, the peak in the HST filters is not well determined. Here, we analyse what the constraints on the time-delay and extinction parameters would be if we were to obtain observations close to the peak. 
 We use the best fit model for iPTF16geu to extrapolate the observations near maximum light. We generate ten observations uniformly in the phase region between 10 and 30 days from the first iPTF observation. We conservatively assume an error on each point to be drawn from a uniform distribution given by the errors on the observed post-maximum epochs. Since the SN is brighter at maximum light we would expect smaller errors on the fluxes. Under these assumptions we fit the above mentioned \texttt{sncosmo} model to the simulated data. 
-We find that the maximum light data significantly improve the constraints on the time delays, allowing a $\sim$ 17$\%$ measurement of the time delay, or 4 hour per day which is a significant improvement compared to the 70$\%$ errors from the current measurements. We also find that the data will improve our constraints on the $E(B-V)$ for the images 2, 3, 4 by a factor 3.5, 2.5 and 6, making the constraints on the extinction parameters significantly more robust.  
+We find that the maximum light data significantly improve the constraints on the time delays, allowing a $\sim$ 17$\%$ measurement of the time delay, or 4 hour per day which is a significant improvement compared to the 70$\%$ errors from the current measurements. We also find that the data will improve our constraints on the $E(B-V)$ for the images 2, 3, 4 by a factor 3.5, 2.5 and 6, making the constraints on the extinction parameters significantly more robust.  Recent studies in the literature find that microlensing from substructures can impact the time-delay measurement, adding an uncertainty of a fraction of day. We note that since the error on $\Delta_t$ from the SN model fit is $\sim 1 day$, the microlensing error is likely to be subdominant to the total error budget.
 
 
 
 
 \section{Conclusions}
-
-
+\label{sec:conclusion}
+In this paper we present ground-based and HST follow-up of the first resolved, multiply-imaged gravitationally lensed SNe~Ia, iPTF16geu. Fitting a multiple image SN~Ia model to the data we were able to derive the total amplification, properties of extinction for each image and time-delays between the images. Accounting for the extinction in the individual images, we find that iPTF16geu is amplified by $63.8^{+3.9}_{-5.5}$ times relative to a normal SN~Ia at the redshift of the source. Since this value accounts for the extinction in each image separately, it is higher than the first estimate provided in G17. Assuming an $R_V =2$ extinction law in the host and lens galaxies, we find an $E(B-V) \sim 0.3$ in Images 1 and 2 $\sim 0.5$ mag in Image 3 and $\sim 1 mag$ in Image 4. 
+From the multiple-image model fit, we find that time-delay of images 2,3,4 relative to image 1 to be -0.811 ($\pm$ 0.828), -2.947 ($\pm$ 1.416) and (-0.164 $\pm$ 2.008), consistent with the limits presented in G17 and the model predictions in \citep{2017ApJ...835L..25M}. We use model independent smoothing techniques to derive the time-delay from the observations of the NIR second maximum and find consistent results with the multiple-image model fit. Furthermore, the total amplification and the time-delay estimates are robust to the assumptions on the host and lens $R_V$. 
+We find that the observed difference in the brightness of Images 1 and 2 relative to images 3 and 4 is discrepant with model prediction which suggest a similar brightness for all images. Differential extinction is not sufficient to explain the observed discrepancy. This discrepancy can be possibly resolved with a slope shallower than the isothermal sphere ($n < 2$) for the lens model and substructure to demagnify images 3 and 4. Further details are presented in an accompanying paper (M{\"o}rtsell et al. in prep). Finally, we present forecasts for observations of lensed SNe discovered in the future and find that $\sim 10$ HST observations of multiple-image glSNe~Ia around maximum light will improve the existing constraints on time-delays by a factor $\sim$ 3 and on extinction by upto a factor $\sim 6$.   
 
 \section*{Acknowledgements}
 
@@ -714,6 +683,7 @@ epoch from Nov 22, 2016 was excluded from the fits since this was found to devia
 	\label{fig:psfnir}
 }
 \end{figure}
+
 
 
 \section{tab of \geu}
